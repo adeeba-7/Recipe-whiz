@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results - Recipe Whiz</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="results-container">
+        <div class="results-header">
+            <h1>Your Recipe Matches</h1>
+            <a href="{{ url_for('index') }}" class="new-search-btn">Find New Search</a>
+        </div>
+        <div class="results">
+            {% for recipe in recipes %}
+            <div class="card">
+                <a href="{{ url_for('recipe_detail', recipe_id=recipe.id) }}">
+                    <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                    <h3 class="card-title">{{ recipe.title }}</h3>
+                    <p class="card-rating">⭐ {{ recipe.rating }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

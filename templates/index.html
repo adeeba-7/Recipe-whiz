@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Whiz</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    <div class="hero">
+        <div class="overlay">
+            <h1>Discover Delicious Recipes</h1>
+            <form action="{{ url_for('search') }}" method="POST" class="search-form">
+
+                <!-- Ingredients Input -->
+                <label>
+                    <span class="form-icon">⧁</span>
+                    <input type="text" name="include_ingredients" placeholder="Ingredients you have..." required>
+                </label>
+
+                <!-- Exclude Ingredients -->
+                <label>
+                    <span class="form-icon">⊝</span>
+                    <input type="text" name="exclude_ingredients" placeholder="Ingredients to exclude (optional)">
+                </label>
+
+                <button type="submit">Find Recipes!</button>
+
+                {% if error %}
+                <p class="error">{{ error }}</p>
+                {% endif %}
+            </form>
+
+
+        </div>
+        <footer class="footer">
+            <p>&copy; 2023 Recipe Whiz. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

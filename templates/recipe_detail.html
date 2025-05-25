@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ recipe.title }} - Recipe Detail</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: #f8f8f8;
+            overflow-y: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        /* Container */
+        .recipe-detail {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+            padding: 30px 40px;
+            min-height: calc(100vh - 80px);
+            box-sizing: border-box;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* Image */
+        .recipe-detail img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .recipe-detail img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Title */
+        .recipe-detail h1 {
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #ff6347;
+            padding-bottom: 12px;
+            max-width: fit-content;
+        }
+
+        /* Rating */
+        .recipe-detail .rating {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #f39c12;
+            margin: 5px 0 5px 0;
+            letter-spacing: 0.03em;
+        }
+
+        /* Meta */
+        .recipe-detail .meta {
+            font-style: italic;
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Description */
+        .recipe-detail p.description {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: #444;
+        }
+
+        /* Section headings */
+        .recipe-detail h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 9px;
+            color: #ff6347;
+            border-bottom: 2px solid #ff6347;
+            padding-bottom: 8px;
+            letter-spacing: 0.04em;
+            margin-top: 0;
+        }
+
+        /* Ingredients list */
+        .recipe-detail ul {
+            list-style: disc inside;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #444;
+            padding-left: 0;
+        }
+
+        .recipe-detail ul li {
+            margin-bottom: 10px;
+            padding-left: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .recipe-detail ul li:hover {
+            color: #ff6347;
+            cursor: default;
+        }
+
+        /* Back button */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn,
+        .back-btn {
+            display: inline-block;
+            background: #ff6347;
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 15px rgba(32, 201, 151, 0.35);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            user-select: none;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover,
+        .back-btn:hover {
+            background: #fc4828;
+            box-shadow: 0 12px 20px rgba(23, 165, 137, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .btn:active,
+        .back-btn:active {
+            transform: translateY(2px);
+        }
+
+        .btn-secondary {
+            background: #444;
+        }
+
+        .btn-secondary:hover {
+            background: #222;
+        }
+
+        .btn-secondary:active {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="recipe-detail">
+        <h1>{{ recipe.title }}</h1>
+        <div class="rating">⭐ {{ recipe.rating }}</div>
+        <div class="meta">Total Time: {{ recipe['total time'] }}</div>
+
+        <h3>Ingredients</h3>
+        <ul>
+            {% for ingredient in recipe.ingredients.split(',') %}
+            <li>{{ ingredient.strip() }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Description</h3>
+        <p class="description">{{ recipe.description }}</p>
+
+        <div class="button-group">
+            <button onclick="window.history.back()" class="btn">← Back to Results</button>
+            <a href="/" class="btn btn-secondary">Find New Recipe</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
