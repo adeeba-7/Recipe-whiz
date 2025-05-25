@@ -1,4 +1,5 @@
 # 🧠 Recipe Whiz
+![image](https://github.com/user-attachments/assets/b05322e6-fa9b-4685-8bf1-1715a589066c)
 
 **Recipe Whiz** is a smart and intuitive web application that helps users discover delicious recipes based on the ingredients they have at home. Simply enter the items in your pantry, and Recipe Whiz will suggest the best matching recipes with beautiful visuals and detailed instructions.
 
